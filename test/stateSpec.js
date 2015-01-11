@@ -148,8 +148,27 @@ describe('state', function () {
       expect(function() {
         stateProvider.state('watch', { url: "/watch" });
       }).not.toThrow();
-    });
+    })
+
+
   });
+
+
+  describe('.stateExists(name)', function(){
+    it("method should exist on provider.", function(){
+      expect(stateProvider.stateExists);
+    })
+
+    it("should return true when a valid name is provided", function(){
+      var actual = stateProvider.stateExists("HHH");
+      expect(actual).toBeTruthy();
+    })
+
+    it("should return false when a valid name is provided", function(){
+      var actual = stateProvider.stateExists("SNEEB");
+      expect(actual).toBeFalsy();
+    })
+  })
 
   describe('.transitionTo()', function () {
     it('returns a promise for the target state', inject(function ($state, $q) {

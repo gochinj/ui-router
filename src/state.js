@@ -687,6 +687,17 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
   }
 
   /**
+   * check of the existence of a registered state
+   * @param  {[type]} name [description]
+   * @return {[type]}      [description]
+   */
+  this.stateExists = stateExists;
+  function stateExists(name){
+    var s = states[name];
+    return angular.isDefined(s) && angular.isObject(s);
+  }
+
+  /**
    * @ngdoc object
    * @name ui.router.state.$state
    *
